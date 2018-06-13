@@ -16,11 +16,9 @@ def index(request):
     return HttpResponse("<html><body><h1>It's Gnarchat!</h1></body></html>")
 
 def db(request):
-
     greeting = Greeting()
     greeting.save()
 
     greetings = Greeting.objects.all()
 
     return render(request, 'db.html', {'greetings': greetings})
-
