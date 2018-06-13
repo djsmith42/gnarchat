@@ -13,7 +13,7 @@ import requests
 def index(request):
     r = requests.get('http://httpbin.org/status/418')
     print(r.text)
-    return HttpResponse('<pre>do you love narwhals? well we do so come look something up about narwhals and tell people about it. welcome to ngarchat (and yes it is supposed to be spelled like that short for gnarly narwhals)</pre>')
+    return HttpResponse("<html><body><h1>It's Gnarchat!</h1></body></html>")
 
 def db(request):
 
