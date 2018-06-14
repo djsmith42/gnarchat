@@ -13,7 +13,14 @@ import requests
 def index(request):
     r = requests.get('http://httpbin.org/status/418')
     print(r.text)
-    return HttpResponse("<html><body><h1>It's Gnarchat!</h1></body></html>")
+    return HttpResponse("""
+    <html>
+        <body>
+            <h1>It's Gnarchat!</h1>
+            <img src="static/gnarwhal.jpg" />
+        </body>
+    </html>
+    """)
 
 def db(request):
     greeting = Greeting()
