@@ -17,7 +17,7 @@ def index(request):
     <html>
         <body>
             <h1>It's Gnarchat!</h1>
-            <img src="static/gnarwhal.jpg" />
+            <img src="static/gnarwhal.jpg" style="width: 500px" />
         </body>
     </html>
     """)
