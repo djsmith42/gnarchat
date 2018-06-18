@@ -50,6 +50,7 @@ Here are three fun facts about the tusk:
 <li>2. Sometimes a female is born with a tusk</li>
 <li>3. It is very rare, but sometimes there is a narwhal with two tusks</li>
 ________________________________________   !   ________________________________________</p>
+        	<img src="static/narwhal-skull-with-tusk-24.jpg">
         </body>
     </html>
     """)
