@@ -51,6 +51,8 @@ Here are three fun facts about the tusk:
 <li>3. It is very rare, but sometimes there is a narwhal with two tusks</li>
 ________________________________________   !   ________________________________________</p>
         	<img src="static/narwhal-skull-with-tusk-24.jpg">
+        <br/>
+        <input type="text"/>
         </body>
     </html>
     """)
