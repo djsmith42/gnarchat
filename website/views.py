@@ -25,6 +25,9 @@ def index(request):
 
         <body>
             <h1>It's Gnarchat, log in and chat about narwhals!</h1>
+            <h2>asdasdf</h2>
+                <input type="text" value="welcome you have entered the world of narwhals, you must not say anything bad about narwhals"/>
+
             <img src="static/gnarwhal.jpg" style="width: 500px" />
             <img src="static/dgnarwhal.jpg" style="width: 500px" />
             <p>Narwhals, the Unicorns of the Sea</p>
@@ -56,6 +59,10 @@ ________________________________________   !   _________________________________
         </body>
     </html>
     """)
+
+def post_message(request):
+    print("foo")
+    return HttpResponse("")
 
 def db(request):
     greeting = Greeting()
