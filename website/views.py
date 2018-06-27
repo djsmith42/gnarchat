@@ -21,6 +21,8 @@ def index(request):
                 margin: 0;
             }
             </style>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+            <script type="text/javascript" src="/static/chat.js"></script>
         </head>
 
         <body>
