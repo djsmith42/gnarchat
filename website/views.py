@@ -1,18 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Greeting
-
-# Create your views here.
-#def index(request):
-#    # return HttpResponse('Hello from Python!')
-#    return render(request, 'index.html')
-
-import requests
+from .models import ChatMessage
 
 def index(request):
-    r = requests.get('http://httpbin.org/status/418')
-    print(r.text)
     return HttpResponse("""
     <html>
         <head>
@@ -63,13 +54,8 @@ ________________________________________   !   _________________________________
     """)
 
 def post_message(request):
-    print("foo")
+    message = ChatMessage.objects.create(
+        text="this is my message",
+        author_name="fake author name",
+    )
     return HttpResponse("")
-
-def db(request):
-    greeting = Greeting()
-    greeting.save()
-
-    greetings = Greeting.objects.all()
-
-    return render(request, 'db.html', {'greetings': greetings})
