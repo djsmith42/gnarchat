@@ -12,11 +12,29 @@ def index(request):
             p {
                 margin: 0;
             }
+            #chat-room {
+                border: 1px solid black;
+                padding: 10px;
+                min-height: 500px;
+                max-height: 500px;
+                overflow-y: auto;
+            }
+            #chat-input {
+                padding: 5px;
+                width: 100%;
+                border: 1px solid black;
+                border-top: none;
+            }
             </style>
         </head>
 
         <body>
             <h1>It's Gnarchat!</h1>
+            <div id="chat-room">
+            </div>
+            <div>
+                <input type="text" id="chat-input" placeholder="Chat message here" />
+            </div>
             <h2>And now, some info about narwhals!</h2>
                 <input type="text" value="welcome you have entered the world of narwhals, you must not say anything bad about narwhals"/>
 
@@ -61,8 +79,9 @@ def messages(request):
     return HttpResponse(json.dumps(payload), content_type="application/json")
 
 def post_message(request):
+    payload = json.loads(request.body)
     message = ChatMessage.objects.create(
-        text="this is my message",
-        author_name="fake author name",
+        text=payload["text"],
+        author_name=payload["author_name"],
     )
     return HttpResponse("")
