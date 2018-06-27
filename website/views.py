@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import json
 
 from .models import ChatMessage
 
@@ -12,8 +13,6 @@ def index(request):
                 margin: 0;
             }
             </style>
-            <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
-            <script type="text/javascript" src="/static/chat.js"></script>
         </head>
 
         <body>
@@ -50,8 +49,16 @@ ________________________________________   !   _________________________________
         <br/>
         <input type="text"/>
         </body>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript" src="/static/chat.js"></script>
     </html>
     """)
+
+def messages(request):
+    payload = list(ChatMessage.objects.order_by('-when').values())
+    for chat_message in payload:
+        chat_message['when'] = chat_message['when'].isoformat()
+    return HttpResponse(json.dumps(payload), content_type="application/json")
 
 def post_message(request):
     message = ChatMessage.objects.create(
