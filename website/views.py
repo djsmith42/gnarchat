@@ -16,8 +16,8 @@ def index(request):
         </head>
 
         <body>
-            <h1>It's Gnarchat, log in and chat about narwhals!</h1>
-            <h2>asdasdf</h2>
+            <h1>It's Gnarchat!</h1>
+            <h2>And now, some info about narwhals!</h2>
                 <input type="text" value="welcome you have entered the world of narwhals, you must not say anything bad about narwhals"/>
 
             <img src="static/gnarwhal.jpg" style="width: 500px" />
