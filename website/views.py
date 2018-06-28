@@ -1,10 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 import json
-
+from django.http import HttpResponse
 from .models import ChatMessage
 
 def index(request):
+    # This function returns the main HTML page for the chat app:
     return HttpResponse("""
     <html>
         <head>
@@ -73,15 +72,24 @@ ________________________________________   !   _________________________________
     """)
 
 def messages(request):
-    payload = list(ChatMessage.objects.order_by('-when').values())
-    for chat_message in payload:
+    max_message_count = 100
+
+    # Fetch the chat messages from the database:
+    chat_messages = list(ChatMessage.objects.order_by('-when')[:max_message_count].values())
+
+    # Convert each date to a string so we can send it over JSON to the browser (JSON doesn't support date/time)
+    for chat_message in chat_messages:
         chat_message['when'] = chat_message['when'].isoformat()
-    return HttpResponse(json.dumps(payload), content_type="application/json")
+
+    # Send them to the browser:
+    return HttpResponse(json.dumps(chat_messages), content_type="application/json")
 
 def post_message(request):
+    # Parse the chat message info from the browser request:
     payload = json.loads(request.body)
-    message = ChatMessage.objects.create(
-        text=payload["text"],
-        author_name=payload["author_name"],
-    )
+
+    # Store the chat message in the database:
+    ChatMessage.objects.create(text=payload["text"], author_name=payload["author_name"])
+
+    # Return an empty response to tell the browser it worked:
     return HttpResponse("")
