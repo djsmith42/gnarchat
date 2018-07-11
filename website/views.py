@@ -75,7 +75,7 @@ def messages(request):
     max_message_count = 100
 
     # Fetch the chat messages from the database:
-    chat_messages = list(ChatMessage.objects.order_by('-when')[:max_message_count].values())
+    chat_messages = list(reversed(list(ChatMessage.objects.order_by('-when')[:max_message_count].values())))
 
     # Convert each date to a string so we can send it over JSON to the browser (JSON doesn't support date/time)
     for chat_message in chat_messages:
@@ -83,6 +83,17 @@ def messages(request):
 
     # Send them to the browser:
     return HttpResponse(json.dumps(chat_messages), content_type="application/json")
+
+def delete_message(request):
+    # Parse the chat message info from the browser request:
+    payload = json.loads(request.body)
+    message_id = payload["messageId"]
+
+    # Store the chat message in the database:
+    ChatMessage.objects.filter(id=message_id).delete()
+
+    # Return an empty response to tell the browser it worked:
+    return HttpResponse("")
 
 def post_message(request):
     # Parse the chat message info from the browser request:
