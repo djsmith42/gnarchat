@@ -29,6 +29,9 @@ def index(request):
 
         <body>
             <h1>It's Gnarchat!</h1>
+            <div>
+            	<input type="text" id="author-name" placeholder="Enter your name" />
+            </div>
             <div id="chat-room">
             </div>
             <div>

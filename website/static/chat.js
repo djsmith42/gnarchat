@@ -1,5 +1,6 @@
 var inputBox = $("#chat-input")
 var chatRoom = $("#chat-room")
+var authorNameInputBox = $("#author-name")
 
 function refreshChatMessages() {
     // Fetch chat messages from the server:
@@ -51,7 +52,7 @@ inputBox.keypress(function(event) {
 			type: "POST",
 			data: JSON.stringify({
 				text: inputBox.val(),
-				author_name: "my name"
+				author_name: authorNameInputBox.val()
 			})
 		}).then(function() {
 			refreshChatMessages()
