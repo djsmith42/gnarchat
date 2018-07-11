@@ -9,9 +9,13 @@ function refreshChatMessages() {
         messages.forEach(function(message) {
      	  html += ("<div><button class=\"x-button\" data-id=\"" + message.id + "\">Delete</button> <b>" + escape(message.author_name) + "</b>: " + escape(message.text) + "</div>")
         })
-        // Replace all the HTML in the chat room box with the new HTML:
-        chatRoom.html(html)
-        chatRoom.scrollTop(99999999999)
+
+        // Replace all the HTML in the chat room box with the new HTML if it's diferent from the HTML that is already showing:
+        if (html != chatRoom.html()) {
+            chatRoom.html(html)
+            chatRoom.scrollTop(99999999999)
+        }
+
 
         var allButtons = $(".x-button")
         allButtons.click(function(event) {
