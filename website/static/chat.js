@@ -57,3 +57,4 @@ inputBox.keypress(function(event) {
 });
 
 refreshChatMessages()
+setInterval(refreshChatMessages, 1000)
