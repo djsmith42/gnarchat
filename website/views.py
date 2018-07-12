@@ -24,6 +24,12 @@ def index(request):
                 border: 1px solid black;
                 border-top: none;
             }
+            #author-name {
+                padding: 5px;
+                width: 100%;
+                border: 1px solid black;
+                border-bottom: none;
+            }
             </style>
         </head>
 
