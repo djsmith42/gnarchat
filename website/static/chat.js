@@ -22,7 +22,20 @@ function escape(text) {
   return $("<div>").text(text).html()
 }
 
+function killStuff()
+{
+	alert("theland made this button");
+	$.ajax("kill_messages", {
+		contentType: "application/json",
+		type: "POST",
+		data: ""
+	}).then(function(){
+		refreshChatMessages();
+	})
+}
+
 inputBox.keypress(function(event) {
+	console.log('test:', authorNameInputBox.val())
 	if (event.which == 13) {
 		console.log("Enter pressed!")
 		$.ajax("/post_message",	{
