@@ -24,7 +24,7 @@ function escape(text) {
 
 function killStuff()
 {
-	alert("theland made this button");
+	$("body").append("<h1>theland</h1>")
 	$.ajax("kill_messages", {
 		contentType: "application/json",
 		type: "POST",
