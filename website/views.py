@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from .models import ChatMessage
 
 def index(request):
-	# print("hey")
     # This function returns the main HTML page for the chat app:
     return HttpResponse("""
     <html>
@@ -92,9 +91,7 @@ def messages(request):
     return HttpResponse(json.dumps(chat_messages), content_type="application/json")
 
 def kill_messages(request):
-	# print(ChatMessage.objects)
-	for cm in ChatMessage.objects.filter():
-		cm.delete()
+	ChatMessage.objects.all().delete()
 	return HttpResponse("")
 
 def post_message(request):
